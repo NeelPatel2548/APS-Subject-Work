@@ -9,11 +9,8 @@ class start_calling:
         A, B = gen.non_linear_data()
         
         vis = VisualData()
-        # vis.showUsing_Pyplot(rtr)
         vis.scatterVis(X, Y)
         vis.scatterVis(A,B)
-
-
 
 start = start_calling()
 
