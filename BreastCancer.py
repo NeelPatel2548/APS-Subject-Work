@@ -1,6 +1,0 @@
-class BCancer:
-
-
-
-
-bca = BCancer();
