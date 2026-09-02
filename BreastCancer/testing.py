@@ -35,6 +35,13 @@ class testingData:
             "P_Benign": self.proablities[:, 1]
         })
 
+        self.threshold = [0.30,0.50,0.90]
+
+
+
+
+
+
     def displayingTrainig(self):
 
         print("Training Size:", len(self.y_train))
@@ -57,55 +64,46 @@ class testingData:
         print(self.results.columns)
 
     def threshHoldTesting(self):
-        results["Actual Labels"] = results["Actual class"].map({
-    0: "P_malignant",
-    1: "P_Benign"
-})
+       self.results["Actual Labels"] = self.results["Actual class"].map({ 0: "P_malignant", 1: "P_Benign"})
 
-print(
-    results[
-        ["Actual Labels", "P_malignant", "P_Benign"]
-    ].head(10)
-)
-
-threshold = 0.50
-
-results["Predicted_mal"] = (
-    results["P_malignant"] >= threshold
-).astype(int)
+       print(self.results[["Actual Labels", "P_malignant", "P_Benign"]].head(10))
 
 
-results["Predicted Labels"] = results[
-    "Predicted_mal"
-].map({
-    1: "P_malignant",
-    0: "P_Benign"
-})
-
-print(
-    results[
-        [
-            "Actual Labels",
-            "P_malignant",
-            "Predicted Labels"
-
-        ]
-    ]
-)
+    #    self.results["Predicted_mal"] = (
+    #         self.results["P_malignant"] >= self.threshold
+    #     ).astype(int)
 
 
+    #    self.results["Predicted Labels"] = self.results[
+    #         "Predicted_mal"
+    #     ].map({
+    #         1: "P_malignant",
+    #         0: "P_Benign"
+    #     })
 
-for threshold in [0.30, 0.50, 0.70]:
-    predictions = (
-        results["P_malignant"] >= threshold
-    ).astype(int)
+    #    print(
+    #         self.results[
+    #             [
+    #                 "Actual Labels",
+    #                 "P_malignant",
+    #                 "Predicted Labels"
 
-    print(
-        f"Threshold = (threshold): ""LabWork 1108.ipynb"
-        f"Predicted malignant cases: = {predictions.sum()}" 
-    )
+    #             ]
+    #         ]
+    #     )
+
+       for thresholld in self.threshold:
+            predictions = (
+                self.results["P_malignant"] >= thresholld
+            ).astype(int)
+
+            print(
+                f"Threshold = (threshold): ""LabWork 1108.ipynb"
+                f"Predicted malignant cases: = {predictions.sum()}" 
+            )
 
 
 tds = testingData()
 
 tds.displayingTrainig()
+tds.threshHoldTesting()
