@@ -106,11 +106,6 @@ for threshold in [0.30, 0.50, 0.70]:
     )
 
 
-
-    ]
-    
-
-
 tds = testingData()
 
 tds.displayingTrainig()
