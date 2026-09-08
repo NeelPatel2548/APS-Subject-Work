@@ -51,4 +51,4 @@ class importingFiles:
 imp = importingFiles()
 
 imp.loadData()
-# imp.plottingdata()
+imp.plottingdata()
